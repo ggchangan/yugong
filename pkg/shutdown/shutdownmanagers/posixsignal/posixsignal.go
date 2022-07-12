@@ -14,7 +14,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/ggchangan/go-scaffold/pkg/shutdown"
+	"github.com/ggchangan/yugong/pkg/shutdown"
 )
 
 // Name defines shutdown manager name.

@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ggchangan/go-scaffold/pkg/shutdown"
+	"github.com/ggchangan/yugong/pkg/shutdown"
 )
 
 type startShutdownFunc func(sm shutdown.ShutdownManager)
