@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  db:
+  db2:
     image: mysql:5.7
     restart: always
     environment:
@@ -19,7 +19,8 @@ services:
       - '3306'
       # Where our data will be persisted
     volumes:
-      - yugong:/var/lib/mysql
+      - yugong:/var/lib/mysql/
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 # Names our volume
 volumes:
   yugong:
