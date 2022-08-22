@@ -8,6 +8,7 @@ import "github.com/ggchangan/yugong/internal/apiserver/store"
 type Service interface {
 	Reports() ReportSrv
 	ReportMessages() ReportMessageSrv
+	Stocks() StockSrv
 }
 
 type service struct {
@@ -27,4 +28,8 @@ func (s *service) Reports() ReportSrv {
 
 func (s *service) ReportMessages() ReportMessageSrv {
 	return newReportMessages(s)
+}
+
+func (s *service) Stocks() StockSrv {
+	return newStockService(s)
 }

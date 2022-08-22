@@ -26,6 +26,10 @@ type datastore struct {
 	// db *gorm.DB
 }
 
+func (ds *datastore) Stocks() store.StockStore {
+	return newStocks(ds)
+}
+
 func (ds *datastore) Reports() store.ReportStore {
 	return newReports(ds)
 }

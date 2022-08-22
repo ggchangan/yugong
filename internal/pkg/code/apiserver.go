@@ -29,3 +29,9 @@ const (
 	// ErrPolicyNotFound - 404: Policy not found.
 	ErrPolicyNotFound int = iota + 110201
 )
+
+const (
+	ErrStockNotFound int = iota + 110301
+
+	ErrStockAlreadyExist
+)

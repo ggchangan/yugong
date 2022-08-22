@@ -19,6 +19,11 @@ type datastore struct {
 	sync.RWMutex
 	reports        []*model.Report
 	reportMessages []*model.ReportMessage
+	stocks         []*model.Stock
+}
+
+func (ds *datastore) Stocks() store.StockStore {
+	return newStocks(ds)
 }
 
 func (ds *datastore) Reports() store.ReportStore {
@@ -44,6 +49,7 @@ func GetFakeFactoryOr() (store.Factory, error) {
 		fakeFactory = &datastore{
 			reports:        FakeReports(ResourceCount),
 			reportMessages: FakeReportMessages(ResourceCount),
+			stocks:         FakeStocks(ResourceCount),
 		}
 	})
 
@@ -86,4 +92,21 @@ func FakeReportMessages(count int) []*model.ReportMessage {
 	}
 
 	return reportMessages
+}
+
+// FakeStocks returns fake stock data.
+func FakeStocks(count int) []*model.Stock {
+	// init some report records
+	stocks := make([]*model.Stock, 0)
+	for i := 1; i <= count; i++ {
+		stocks = append(stocks, &model.Stock{
+			ObjectMeta: model.ObjectMeta{
+				Name: fmt.Sprintf("report%d", i),
+				ID:   uint64(i),
+			},
+			Price: float32(i),
+		})
+	}
+
+	return stocks
 }

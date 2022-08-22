@@ -12,6 +12,7 @@ var client Factory
 type Factory interface {
 	Reports() ReportStore
 	ReportMessages() ReportMessageStore
+	Stocks() StockStore
 	Close() error
 }
 

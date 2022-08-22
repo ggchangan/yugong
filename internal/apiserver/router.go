@@ -1,6 +1,7 @@
 package apiserver
 
 import (
+	"github.com/ggchangan/yugong/internal/apiserver/controller/v1/stock"
 	"github.com/gin-gonic/gin"
 
 	"github.com/ggchangan/yugong/internal/apiserver/controller/v1/message"
@@ -37,6 +38,13 @@ func installController(g *gin.Engine) *gin.Engine {
 			reportMessageController := message.NewReportMessageController(storeIns)
 
 			reportMessagev1.GET(":id", reportMessageController.Get) // admin api
+		}
+
+		stockv1 := v1.Group("/stock")
+		{
+			stockController := stock.NewStockController(storeIns)
+
+			stockv1.GET(":id", stockController.Get)
 		}
 
 	}
